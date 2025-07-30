@@ -1,21 +1,209 @@
-// Add custom fonts by visiting and search https://fonts.google.com
+// Add custom fonts
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-// Import utilities.
+// Import utilities
+@import 'utils/variables';
 @import 'utils/typography';
 @import 'utils/colors';
 @import 'utils/mixins';
-@import 'utils/variables';
 
-/* Global styles */
+// Global styles
 @import 'global/window';
 @import 'global/grid';
 @import 'global/flex';
 
-/* Styles limited to myriad-system sheets */
-.myriad-system {
-  @import 'components/forms';
-  @import 'components/resource';
-  @import 'components/items';
-  @import 'components/effects';
+// Components
+@import 'components/forms';
+@import 'components/items';
+@import 'components/effects';
+@import 'components/resource';
+
+/* Styles spécifiques au système Myriad */
+.myriad-system.sheet.actor {
+  min-width: 560px;
+  min-height: 420px;
+
+  .sheet-header {
+    flex: 0 0 120px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+
+    .profile-img {
+      flex: 0 0 100px;
+      height: 100px;
+      margin-right: 10px;
+    }
+
+    .header-fields {
+      flex: 1;
+      height: 100px;
+    }
+
+    .charname {
+      height: 50px;
+      padding: 0px;
+      margin: 5px 0;
+      
+      input {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+      }
+    }
+  }
+
+  .resource {
+    width: 50%;
+    height: 40px;
+    margin-top: 10px;
+    float: left;
+    text-align: center;
+
+    input {
+      width: 100px;
+      height: 28px;
+    }
+
+    .resource-label {
+      font-size: 12px;
+      font-weight: bold;
+    }
+  }
+
+  .sheet-tabs {
+    flex: 0 0 30px;
+    border-top: 1px solid #AAA;
+    border-bottom: 1px solid #AAA;
+
+    .item {
+      font-weight: bold;
+    }
+
+    .item.active {
+      text-decoration: underline;
+      text-shadow: none;
+    }
+  }
+
+  .sheet-body {
+    overflow: hidden;
+    
+    .tab {
+      height: 100%;
+      overflow-y: auto;
+    }
+  }
+
+  // Section des caractéristiques
+  .characteristics {
+    .characteristic {
+      margin: 5px 0;
+      padding: 5px;
+      border: 1px solid #AAA;
+      border-radius: 3px;
+
+      .characteristic-label {
+        font-weight: bold;
+      }
+
+      .characteristic-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+  // Section des objets et listes
+  .items-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    color: #444;
+
+    .item {
+      line-height: 30px;
+      padding: 3px 0;
+      border-bottom: 1px solid #BBB;
+
+      .item-name {
+        margin: 0;
+      }
+
+      .item-image {
+        flex: 0 0 24px;
+        margin-right: 5px;
+      }
+
+      img {
+        display: block;
+      }
+
+      .item-tags {
+        flex: 1;
+        margin: 0 5px;
+      }
+
+      .tag {
+        display: inline-block;
+        margin: 0 2px;
+        padding: 0 3px;
+        font-size: 10px;
+        line-height: 16px;
+        border: 1px solid #999;
+        border-radius: 3px;
+        background: #DDD;
+      }
+
+      .item-controls {
+        flex: 0 0 80px;
+        text-align: right;
+
+        .item-control {
+          margin: 0 2px;
+          
+          i {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+
+  // Inventaire en grille
+  .inventory-grid {
+    display: grid;
+    gap: 1px;
+    background: #DDD;
+    padding: 5px;
+    margin-bottom: 10px;
+
+    .inventory-cell {
+      width: 50px;
+      height: 50px;
+      background: white;
+      border: 1px solid #AAA;
+      transition: all 0.2s ease;
+
+      &.occupied {
+        background: #EEE;
+      }
+
+      &.dragging-over {
+        background: #CFC;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+  }
 }

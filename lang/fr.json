@@ -1,0 +1,82 @@
+{
+  "MYRIAD_SYSTEM": {
+    "Characteristic": {
+      "Puissance": "Puissance",
+      "Coordination": "Coordination",
+      "Ingeniosite": "Ingéniosité",
+      "Perspicacite": "Perspicacité"
+    },
+    "ItemProperty": {
+      "Utilisable": "Utilisable",
+      "Equipable": "Équipable",
+      "Magique": "Magique",
+      "Consommable": "Consommable",
+      "Jetable": "Jetable"
+    },
+    "ItemType": {
+      "item": "Objet",
+      "feature": "Capacité",
+      "spell": "Sort",
+      "domain": "Domaine",
+      "art": "Art",
+      "voie": "Voie",
+      "competence": "Compétence"
+    },
+    "Acquisition": {
+      "xpCost": "Coût en PX",
+      "price": "Prix",
+      "prerequisites": "Prérequis",
+      "currencies": {
+        "po": "Pièces d'Or",
+        "pa": "Pièces d'Argent",
+        "pc": "Pièces de Cuivre"
+      }
+    },
+    "Usage": {
+      "cost": "Coût",
+      "costTypes": {
+        "magic": "Points de Magie",
+        "health": "Points de Vie",
+        "stamina": "Endurance"
+      },
+      "frequency": {
+        "label": "Fréquence",
+        "atwill": "À Volonté",
+        "turn": "Par Tour",
+        "scene": "Par Scène",
+        "daily": "Par Jour",
+        "weekly": "Par Semaine",
+        "charges": "Charges"
+      },
+      "conditions": "Conditions d'Utilisation"
+    },
+    "SheetLabels": {
+      "Actor": "Fiche de Personnage Myriad",
+      "Item": "Fiche d'Objet Myriad",
+      "Characteristics": "Caractéristiques",
+      "Magic": "Magie",
+      "Inventory": "Inventaire",
+      "Features": "Capacités",
+      "Spells": "Sorts"
+    },
+    "Effect": {
+      "Source": "Source",
+      "Toggle": "Activer/Désactiver l'Effet",
+      "Temporary": "Effets Temporaires",
+      "Passive": "Effets Passifs",
+      "Inactive": "Effets Inactifs"
+    }
+  },
+
+  "TYPES": {
+    "Actor": {
+      "character": "Personnage",
+      "npc": "PNJ"
+    },
+    "Item": {
+      "item": "Objet",
+      "feature": "Capacité",
+      "spell": "Sort"
+    }
+  }
+}

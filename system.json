@@ -28,14 +28,21 @@
       "thumbnail": "systems/myriad-system/assets/anvil-impact.png"
     }
   ],
-  "version": "2.0.0",
+  "version": "1.0.0",
   "compatibility": {
-    "minimum": 11,
-    "verified": "11.315"
+    "minimum": "13",
+    "verified": "13",
+    "maximum": "13"
   },
   "esmodules": ["module/myriad-system.mjs"],
   "styles": ["css/myriad-system.css"],
   "languages": [
+    {
+      "lang": "fr",
+      "name": "Français",
+      "path": "lang/fr.json",
+      "flags": {"myriad-system": {"default": true}}
+    },
     {
       "lang": "en",
       "name": "English",

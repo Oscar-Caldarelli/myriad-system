@@ -1,8 +1,132 @@
 {
   "Actor": {
-    "types": ["character", "npc"]
+    "types": ["character", "npc"],
+    "templates": {
+      "base": {
+        "characteristics": {
+          "puissance": {
+            "value": 40,
+            "min": 0,
+            "max": 100
+          },
+          "coordination": {
+            "value": 40,
+            "min": 0,
+            "max": 100
+          },
+          "ingeniosite": {
+            "value": 40,
+            "min": 0,
+            "max": 100
+          },
+          "perspicacite": {
+            "value": 40,
+            "min": 0,
+            "max": 100
+          }
+        },
+        "magic": {
+          "points": {
+            "value": 0,
+            "max": 0
+          },
+          "characteristic": ""
+        }
+      }
+    },
+    "character": {
+      "templates": ["base"],
+      "biography": "",
+      "xp": {
+        "value": 0,
+        "earned": 0
+      },
+      "inventory": {
+        "gridSize": {
+          "width": 6,
+          "height": 6
+        },
+        "bonusSlots": 0
+      }
+    },
+    "npc": {
+      "templates": ["base"],
+      "cr": 0,
+      "superhumanTiers": []
+    }
   },
   "Item": {
-    "types": ["item", "feature", "spell"]
+    "types": ["item", "feature", "spell", "domain", "art", "voie", "competence"],
+    "templates": {
+      "base": {
+        "description": "",
+        "source": "",
+        "tags": []
+      },
+      "acquirable": {
+        "acquisition": {
+          "xpCost": 0,
+          "price": {
+            "value": 0,
+            "currency": "po"
+          },
+          "prerequisites": []
+        }
+      },
+      "usable": {
+        "usage": {
+          "cost": {
+            "value": 0,
+            "type": "magic"
+          },
+          "frequency": "atwill",
+          "conditions": []
+        }
+      }
+    },
+    "item": {
+      "templates": ["base", "acquirable", "usable"],
+      "quantity": 1,
+      "gridSpace": {
+        "width": 1,
+        "height": 1
+      },
+      "properties": [],
+      "equipped": false
+    },
+    "feature": {
+      "templates": ["base", "acquirable"],
+      "level": 1
+    },
+    "spell": {
+      "templates": ["base", "usable"],
+      "grade": 1,
+      "domain": "",
+      "art": ""
+    },
+    "domain": {
+      "templates": ["base", "acquirable"],
+      "effects": [],
+      "spells": []
+    },
+    "art": {
+      "templates": ["base", "acquirable"],
+      "benefits": [],
+      "constraints": []
+    },
+    "voie": {
+      "templates": ["base", "acquirable"],
+      "benefits": [],
+      "drawbacks": []
+    },
+    "competence": {
+      "templates": ["base", "acquirable"],
+      "level": {
+        "value": 1,
+        "max": 5
+      },
+      "characteristic": "",
+      "isUnique": false
+    }
   }
 }

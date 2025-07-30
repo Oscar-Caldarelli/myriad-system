@@ -1,33 +1,29 @@
-<ol class='items-list'>
-  <li class='item flexrow items-header'>
-    <div class='item-name'>{{localize 'Name'}}</div>
-    <div class='item-formula'>{{localize 'Roll Formula'}}</div>
-    <div class='item-controls'>
-      <a
-        class='item-control item-create'
-        title='{{localize "DOCUMENT.Create" type='Item'}}'
-        data-type='item'
-      >
-        <i class='fas fa-plus'></i>
-        {{localize 'DOCUMENT.New' type='item'}}
-      </a>
-    </div>
-  </li>
-  {{#each gear as |item id|}}
-    <li class='item flexrow' data-item-id='{{item._id}}'>
-      <div class='item-name'>
-        <div class='item-image'>
-          <a class='rollable' data-roll-type='item'>
-            <img
-              src='{{item.img}}'
-              title='{{item.name}}'
-              width='24'
-              height='24'
-            />
-          </a>
-        </div>
-        <h4>{{item.name}}</h4>
-      </div>
+{{!-- Template pour les objets dans l'inventaire --}}
+<div class="item-header flexrow">
+  <div class="item-image">
+    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+  </div>
+  <h4 class="item-name">{{item.name}}</h4>
+  
+  {{#if item.system.quantity}}
+  <div class="item-quantity">
+    <input type="number" value="{{item.system.quantity}}" data-dtype="Number"/>
+  </div>
+  {{/if}}
+
+  {{#if item.system.gridSpace}}
+  <div class="item-size">
+    {{item.system.gridSpace.width}}x{{item.system.gridSpace.height}}
+  </div>
+  {{/if}}
+
+  {{#if item.system.tags}}
+  <div class="item-tags">
+    {{#each item.system.tags}}
+    <span class="tag">{{this}}</span>
+    {{/each}}
+  </div>
+  {{/if}}
       <div class='item-formula item-prop'>{{item.system.formula}}</div>
       <div class='item-controls'>
         <a

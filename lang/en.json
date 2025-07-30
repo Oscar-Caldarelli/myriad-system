@@ -1,22 +1,63 @@
 {
   "MYRIAD_SYSTEM": {
-    "Ability": {
-      "Str": { "long": "Strength", "abbr": "str" },
-      "Con": { "long": "Constitution", "abbr": "con" },
-      "Dex": { "long": "Dexterity", "abbr": "dex" },
-      "Int": { "long": "Intelligence", "abbr": "int" },
-      "Wis": { "long": "Wisdom", "abbr": "wis" },
-      "Cha": { "long": "Charisma", "abbr": "cha" }
+    "Characteristic": {
+      "Puissance": "Power",
+      "Coordination": "Coordination",
+      "Ingeniosite": "Ingenuity",
+      "Perspicacite": "Insight"
+    },
+    "ItemProperty": {
+      "Utilisable": "Usable",
+      "Equipable": "Equippable",
+      "Magique": "Magical",
+      "Consommable": "Consumable",
+      "Jetable": "Throwable"
+    },
+    "ItemType": {
+      "item": "Item",
+      "feature": "Feature",
+      "spell": "Spell",
+      "domain": "Domain",
+      "art": "Art",
+      "voie": "Path",
+      "competence": "Skill"
+    },
+    "Acquisition": {
+      "xpCost": "XP Cost",
+      "price": "Price",
+      "prerequisites": "Prerequisites",
+      "currencies": {
+        "po": "Gold Pieces",
+        "pa": "Silver Pieces",
+        "pc": "Copper Pieces"
+      }
+    },
+    "Usage": {
+      "cost": "Cost",
+      "costTypes": {
+        "magic": "Magic Points",
+        "health": "Health Points",
+        "stamina": "Stamina"
+      },
+      "frequency": {
+        "label": "Frequency",
+        "atwill": "At Will",
+        "turn": "Per Turn",
+        "scene": "Per Scene",
+        "daily": "Per Day",
+        "weekly": "Per Week",
+        "charges": "Charges"
+      },
+      "conditions": "Usage Conditions"
     },
     "SheetLabels": {
-      "Actor": "MyriadSystem Actor Sheet",
-      "Item": "MyriadSystem Item Sheet"
-    },
-    "Item": {
-      "Spell": {
-        "SpellLVL": "Level {level} Spells",
-        "AddLVL": "Add LVL {level}"
-      }
+      "Actor": "Myriad Character Sheet",
+      "Item": "Myriad Item Sheet",
+      "Characteristics": "Characteristics",
+      "Magic": "Magic",
+      "Inventory": "Inventory",
+      "Features": "Features",
+      "Spells": "Spells"
     },
     "Effect": {
       "Source": "Source",
