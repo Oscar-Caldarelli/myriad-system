@@ -2,7 +2,7 @@
 
 Ce repo est le systeme pour Myriades. il est fait pour foundryvtt 13.
 
-We're following this guide https://foundryvtt.wiki/en/development/guides/SD-tutorial
+https://foundryvtt.com/api/modules.html
 
 ### Introduction
 

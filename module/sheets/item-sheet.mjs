@@ -5,9 +5,9 @@ import {
 
 /**
  * Extend the basic ItemSheet with some very simple modifications
- * @extends {ItemSheet}
+ * @extends {foundry.appv1.sheets.ItemSheet}
  */
-export class MyriadSystemItemSheet extends ItemSheet {
+export class MyriadSystemItemSheet extends foundry.appv1.sheets.ItemSheet {
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -40,19 +40,18 @@ export class MyriadSystemItemSheet extends ItemSheet {
   /** @override */
   async getData() {
     // Retrieve base data structure.
-    const context = super.getData();
+    const context = await super.getData();
 
-    // Use a safe clone of the item data for further operations.
-    const itemData = this.document.toPlainObject();
+    // Add the item's data to context.item for easier access
+    context.item = this.item;
 
     // Enrich description info for display
     // Enrichment turns text like `[[/r 1d20]]` into buttons
-    context.enrichedDescription = await TextEditor.enrichHTML(
+    context.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(
       this.item.system.description,
       {
         // Whether to show secret blocks in the finished html
         secrets: this.document.isOwner,
-        // Necessary in v11, can be removed in v12
         async: true,
         // Data to fill in for inline rolls
         rollData: this.item.getRollData(),
@@ -61,9 +60,9 @@ export class MyriadSystemItemSheet extends ItemSheet {
       }
     );
 
-    // Add the item's data to context.data for easier access, as well as flags.
-    context.system = itemData.system;
-    context.flags = itemData.flags;
+    // Add the item's system data and flags for easier access
+    context.system = this.item.system;
+    context.flags = this.item.flags;
 
     // Adding a pointer to CONFIG.MYRIAD_SYSTEM
     context.config = CONFIG.MYRIAD_SYSTEM;

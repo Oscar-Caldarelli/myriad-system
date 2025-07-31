@@ -33,14 +33,37 @@
           <div class="spell-cost">
             {{#with spell.system.usage.cost}}
             <span class="cost">
-              {{value}} {{localize (concat "MYRIAD_SYSTEM.Usage.costTypes." type)}}
+              {{value}} 
+              {{#if type}}
+                {{#ifequal type "magic"}}
+                  {{localize "MYRIAD_SYSTEM.Usage.costTypes.magic"}}
+                {{/ifequal}}
+                {{#ifequal type "health"}}
+                  {{localize "MYRIAD_SYSTEM.Usage.costTypes.health"}}
+                {{/ifequal}}
+                {{#ifequal type "stamina"}}
+                  {{localize "MYRIAD_SYSTEM.Usage.costTypes.stamina"}}
+                {{/ifequal}}
+              {{/if}}
             </span>
             {{/with}}
           </div>
 
           <div class="spell-frequency">
             <i class="fas fa-clock"></i>
-            {{localize (concat "MYRIAD_SYSTEM.Usage.frequency." spell.system.usage.frequency)}}
+            {{#if (eq spell.system.usage.frequency "atwill")}}
+              {{localize "MYRIAD_SYSTEM.Usage.frequency.atwill"}}
+            {{else if (eq spell.system.usage.frequency "daily")}}
+              {{localize "MYRIAD_SYSTEM.Usage.frequency.daily"}}
+            {{else if (eq spell.system.usage.frequency "weekly")}}
+              {{localize "MYRIAD_SYSTEM.Usage.frequency.weekly"}}
+            {{else if (eq spell.system.usage.frequency "monthly")}}
+              {{localize "MYRIAD_SYSTEM.Usage.frequency.monthly"}}
+            {{else if (eq spell.system.usage.frequency "yearly")}}
+              {{localize "MYRIAD_SYSTEM.Usage.frequency.yearly"}}
+            {{else}}
+              {{spell.system.usage.frequency}}
+            {{/if}}
           </div>
 
           <div class="item-controls">
@@ -74,22 +97,3 @@
   </div>
   {{/each}}
 </div>
-        </div>
-        <div class='item-controls'>
-          <a
-            class='item-control item-edit'
-            title='{{localize "DOCUMENT.Edit" type='spell'}}'
-          >
-            <i class='fas fa-edit'></i>
-          </a>
-          <a
-            class='item-control item-delete'
-            title='{{localize "DOCUMENT.Delete" type='spell'}}'
-          >
-            <i class='fas fa-trash'></i>
-          </a>
-        </div>
-      </li>
-    {{/each}}
-  {{/each}}
-</ol>

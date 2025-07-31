@@ -1,5 +1,5 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
-/* Global styles */
 .window-app {
   font-family: "Roboto", sans-serif;
 }
@@ -203,11 +203,11 @@
   text-align: center;
 }
 
-/* Styles limited to myriad-system sheets */
-.myriad-system .item-form {
+.item-form {
   font-family: "Roboto", sans-serif;
 }
-.myriad-system .sheet-header {
+
+.sheet-header {
   flex: 0 auto;
   overflow: hidden;
   display: flex;
@@ -216,43 +216,44 @@
   justify-content: flex-start;
   margin-bottom: 10px;
 }
-.myriad-system .sheet-header .profile-img {
+.sheet-header .profile-img {
   flex: 0 0 100px;
   height: 100px;
   margin-right: 10px;
 }
-.myriad-system .sheet-header .header-fields {
+.sheet-header .header-fields {
   flex: 1;
 }
-.myriad-system .sheet-header h1.charname {
+.sheet-header h1.charname {
   height: 50px;
   padding: 0px;
   margin: 5px 0;
   border-bottom: 0;
 }
-.myriad-system .sheet-header h1.charname input {
+.sheet-header h1.charname input {
   width: 100%;
   height: 100%;
   margin: 0;
 }
-.myriad-system .sheet-tabs {
+
+.sheet-tabs {
   flex: 0;
 }
-.myriad-system .sheet-body,
-.myriad-system .sheet-body .tab,
-.myriad-system .sheet-body .tab .editor {
+
+.sheet-body,
+.sheet-body .tab,
+.sheet-body .tab .editor {
   height: 100%;
 }
-.myriad-system .tox .tox-editor-container {
+
+.tox .tox-editor-container {
   background: #fff;
 }
-.myriad-system .tox .tox-edit-area {
+.tox .tox-edit-area {
   padding: 0 8px;
 }
-.myriad-system .resource-label {
-  font-weight: bold;
-}
-.myriad-system .items-header {
+
+.items-header {
   height: 28px;
   margin: 2px 0;
   padding: 0;
@@ -261,17 +262,18 @@
   border: 2px groove #eeede0;
   font-weight: bold;
 }
-.myriad-system .items-header > * {
+.items-header > * {
   font-size: 14px;
   text-align: center;
 }
-.myriad-system .items-header .item-name {
+.items-header .item-name {
   font-weight: bold;
   padding-left: 5px;
   text-align: left;
   display: flex;
 }
-.myriad-system .items-list {
+
+.items-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -279,12 +281,12 @@
   scrollbar-width: thin;
   color: #444;
 }
-.myriad-system .items-list .item-list {
+.items-list .item-list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.myriad-system .items-list .item-name {
+.items-list .item-name {
   flex: 2;
   margin: 0;
   overflow: hidden;
@@ -293,46 +295,46 @@
   align-items: center;
   display: flex;
 }
-.myriad-system .items-list .item-name h3, .myriad-system .items-list .item-name h4 {
+.items-list .item-name h3, .items-list .item-name h4 {
   margin: 0;
   white-space: nowrap;
   overflow-x: hidden;
 }
-.myriad-system .items-list .item-controls {
+.items-list .item-controls {
   display: flex;
   flex: 0 0 100px;
   justify-content: flex-end;
 }
-.myriad-system .items-list .item-controls a {
+.items-list .item-controls a {
   font-size: 12px;
   text-align: center;
   margin: 0 6px;
 }
-.myriad-system .items-list .item {
+.items-list .item {
   align-items: center;
   padding: 0 2px;
   border-bottom: 1px solid #c9c7b8;
 }
-.myriad-system .items-list .item:last-child {
+.items-list .item:last-child {
   border-bottom: none;
 }
-.myriad-system .items-list .item .item-name {
+.items-list .item .item-name {
   color: #191813;
 }
-.myriad-system .items-list .item .item-name .item-image {
+.items-list .item .item-name .item-image {
   flex: 0 0 30px;
   height: 30px;
   background-size: 30px;
   border: none;
   margin-right: 5px;
 }
-.myriad-system .items-list .item-prop {
+.items-list .item-prop {
   text-align: center;
   border-left: 1px solid #c9c7b8;
   border-right: 1px solid #c9c7b8;
   font-size: 12px;
 }
-.myriad-system .items-list .items-header {
+.items-list .items-header {
   height: 28px;
   margin: 2px 0;
   padding: 0;
@@ -341,26 +343,250 @@
   border: 2px groove #eeede0;
   font-weight: bold;
 }
-.myriad-system .items-list .items-header > * {
+.items-list .items-header > * {
   font-size: 12px;
   text-align: center;
 }
-.myriad-system .items-list .items-header .item-name {
+.items-list .items-header .item-name {
   padding-left: 5px;
   text-align: left;
 }
-.myriad-system .item-formula {
+
+.item-formula {
   flex: 0 0 200px;
   padding: 0 8px;
 }
-.myriad-system .effects .item .effect-source,
-.myriad-system .effects .item .effect-duration,
-.myriad-system .effects .item .effect-controls {
+
+.effects .item .effect-source,
+.effects .item .effect-duration,
+.effects .item .effect-controls {
   text-align: center;
   border-left: 1px solid #c9c7b8;
   border-right: 1px solid #c9c7b8;
   font-size: 12px;
 }
-.myriad-system .effects .item .effect-controls {
+.effects .item .effect-controls {
   border: none;
+}
+
+.resource-label {
+  font-weight: bold;
+}
+
+/* Characteristics layout */
+.characteristics-container {
+  display: flex;
+  gap: 20px;
+  margin: 10px 0;
+}
+
+.characteristics-column {
+  flex: 1;
+  border: 1px solid #c9c7b8;
+  border-radius: 5px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+}
+.characteristics-column .column-header {
+  text-align: center;
+  margin: 0 0 15px 0;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #c9c7b8;
+  font-weight: bold;
+  color: #191813;
+}
+.characteristics-column.physical .column-header {
+  color: #8b4513;
+}
+.characteristics-column.mental .column-header {
+  color: #4682b4;
+}
+
+.characteristics-separator {
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, #c9c7b8, transparent);
+  margin: 10px 0;
+}
+
+.characteristic {
+  margin-bottom: 10px;
+}
+.characteristic-label {
+  flex: 0 0 120px;
+  font-weight: bold;
+  color: #191813;
+}
+.characteristic-content {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex: 1;
+}
+.characteristic-content input {
+  flex: 0 0 50px;
+  text-align: center;
+  border: 1px solid #b5b3a4;
+  border-radius: 3px;
+  padding: 2px 5px;
+}
+.characteristic-max {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  color: #666;
+  font-size: 14px;
+}
+
+/* Styles spécifiques au système Myriad */
+.myriad-system.sheet.actor {
+  min-width: 560px;
+  min-height: 420px;
+}
+.myriad-system.sheet.actor .sheet-header {
+  flex: 0 0 120px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+.myriad-system.sheet.actor .sheet-header .profile-img {
+  flex: 0 0 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+.myriad-system.sheet.actor .sheet-header .header-fields {
+  flex: 1;
+  height: 100px;
+}
+.myriad-system.sheet.actor .sheet-header .charname {
+  height: 50px;
+  padding: 0px;
+  margin: 5px 0;
+}
+.myriad-system.sheet.actor .sheet-header .charname input {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+.myriad-system.sheet.actor .resource {
+  width: 50%;
+  height: 40px;
+  margin-top: 10px;
+  float: left;
+  text-align: center;
+}
+.myriad-system.sheet.actor .resource input {
+  width: 100px;
+  height: 28px;
+}
+.myriad-system.sheet.actor .resource .resource-label {
+  font-size: 12px;
+  font-weight: bold;
+}
+.myriad-system.sheet.actor .sheet-tabs {
+  flex: 0 0 30px;
+  border-top: 1px solid #AAA;
+  border-bottom: 1px solid #AAA;
+}
+.myriad-system.sheet.actor .sheet-tabs .item {
+  font-weight: bold;
+}
+.myriad-system.sheet.actor .sheet-tabs .item.active {
+  text-decoration: underline;
+  text-shadow: none;
+}
+.myriad-system.sheet.actor .sheet-body {
+  overflow: hidden;
+}
+.myriad-system.sheet.actor .sheet-body .tab {
+  height: 100%;
+  overflow-y: auto;
+}
+.myriad-system.sheet.actor .characteristics .characteristic {
+  margin: 5px 0;
+  padding: 5px;
+  border: 1px solid #AAA;
+  border-radius: 3px;
+}
+.myriad-system.sheet.actor .characteristics .characteristic .characteristic-label {
+  font-weight: bold;
+}
+.myriad-system.sheet.actor .characteristics .characteristic .characteristic-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.myriad-system.sheet.actor .items-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  color: #444;
+}
+.myriad-system.sheet.actor .items-list .item {
+  line-height: 30px;
+  padding: 3px 0;
+  border-bottom: 1px solid #BBB;
+}
+.myriad-system.sheet.actor .items-list .item .item-name {
+  margin: 0;
+}
+.myriad-system.sheet.actor .items-list .item .item-image {
+  flex: 0 0 24px;
+  margin-right: 5px;
+}
+.myriad-system.sheet.actor .items-list .item img {
+  display: block;
+}
+.myriad-system.sheet.actor .items-list .item .item-tags {
+  flex: 1;
+  margin: 0 5px;
+}
+.myriad-system.sheet.actor .items-list .item .tag {
+  display: inline-block;
+  margin: 0 2px;
+  padding: 0 3px;
+  font-size: 10px;
+  line-height: 16px;
+  border: 1px solid #999;
+  border-radius: 3px;
+  background: #DDD;
+}
+.myriad-system.sheet.actor .items-list .item .item-controls {
+  flex: 0 0 80px;
+  text-align: right;
+}
+.myriad-system.sheet.actor .items-list .item .item-controls .item-control {
+  margin: 0 2px;
+}
+.myriad-system.sheet.actor .items-list .item .item-controls .item-control i {
+  font-size: 12px;
+}
+.myriad-system.sheet.actor .inventory-grid {
+  display: grid;
+  gap: 1px;
+  background: #DDD;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+.myriad-system.sheet.actor .inventory-grid .inventory-cell {
+  width: 50px;
+  height: 50px;
+  background: white;
+  border: 1px solid #AAA;
+  transition: all 0.2s ease;
+}
+.myriad-system.sheet.actor .inventory-grid .inventory-cell.occupied {
+  background: #EEE;
+}
+.myriad-system.sheet.actor .inventory-grid .inventory-cell.dragging-over {
+  background: #CFC;
+}
+.myriad-system.sheet.actor .inventory-grid .inventory-cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }

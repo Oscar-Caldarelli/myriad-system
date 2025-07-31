@@ -1,0 +1,69 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+    </div>
+  </header>
+
+  {{!-- Sheet Tab Navigation --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="description">Description</a>
+    <a class="item" data-tab="attributes">Attributes</a>
+    <a class="item" data-tab="effects">Effects</a>
+  </nav>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+
+    {{!-- Description Tab --}}
+    <div class="tab" data-group="primary" data-tab="description">
+      {{!-- Editors must receive enriched text data from getData to properly handle rolls --}}
+      {{editor enrichedDescription target="system.description" engine="prosemirror" button=true editable=editable}}
+    </div>
+
+    {{!-- Attributes Tab --}}
+    <div class="tab attributes" data-group="primary" data-tab="attributes">
+      {{!-- Competence-specific attributes --}}
+      <div class="form-group">
+        <label>{{localize "MYRIAD_SYSTEM.ItemAttributes.Level"}}</label>
+        <div class="form-fields">
+          <div class="item-level">
+            {{#times system.level.max}}
+            <i class="fas {{#if (lte this system.level.value)}}fa-circle{{else}}fa-circle-o{{/if}}"></i>
+            {{/times}}
+          </div>
+          <input type="range" name="system.level.value" value="{{system.level.value}}" min="1" max="{{system.level.max}}" data-dtype="Number"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>{{localize "MYRIAD_SYSTEM.ItemAttributes.Characteristic"}}</label>
+        <div class="form-fields">
+          <select name="system.characteristic">
+            {{#select system.characteristic}}
+            <option value="">{{localize "None"}}</option>
+            <option value="puissance">{{localize config.characteristics.puissance}}</option>
+            <option value="coordination">{{localize config.characteristics.coordination}}</option>
+            <option value="ingeniosite">{{localize config.characteristics.ingeniosite}}</option>
+            <option value="perspicacite">{{localize config.characteristics.perspicacite}}</option>
+            {{/select}}
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>{{localize "MYRIAD_SYSTEM.ItemAttributes.IsUnique"}}</label>
+        <div class="form-fields">
+          <input type="checkbox" name="system.isUnique" {{checked system.isUnique}}/>
+        </div>
+      </div>
+    </div>
+
+    {{!-- Effects Tab --}}
+    <div class="tab effects" data-group="primary" data-tab="effects">
+      {{> "systems/myriad-system/templates/item/parts/item-effects.hbs"}}
+    </div>
+  </section>
+
+</form>

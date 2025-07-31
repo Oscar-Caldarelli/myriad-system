@@ -31,7 +31,7 @@ Hooks.once('init', function () {
    * @type {String}
    */
   CONFIG.Combat.initiative = {
-    formula: '1d20 + @abilities.dex.mod',
+    formula: '1d20 + @coordination.mod',
     decimals: 2,
   };
 
@@ -49,7 +49,9 @@ Hooks.once('init', function () {
   CONFIG.Item.dataModels = {
     item: models.MyriadSystemItem,
     feature: models.MyriadSystemFeature,
-    spell: models.MyriadSystemSpell
+    spell: models.MyriadSystemSpell,
+    competence: models.MyriadSystemCompetence,
+    voie: models.MyriadSystemVoie
   }
 
   // Active Effects are never copied to the Actor,
@@ -58,13 +60,13 @@ Hooks.once('init', function () {
   CONFIG.ActiveEffect.legacyTransferral = false;
 
   // Register sheet application classes
-  Actors.unregisterSheet('core', ActorSheet);
-  Actors.registerSheet('myriad-system', MyriadSystemActorSheet, {
+  foundry.documents.collections.Actors.unregisterSheet('core', foundry.appv1.sheets.ActorSheet);
+  foundry.documents.collections.Actors.registerSheet('myriad-system', MyriadSystemActorSheet, {
     makeDefault: true,
     label: 'MYRIAD_SYSTEM.SheetLabels.Actor',
   });
-  Items.unregisterSheet('core', ItemSheet);
-  Items.registerSheet('myriad-system', MyriadSystemItemSheet, {
+  foundry.documents.collections.Items.unregisterSheet('core', foundry.appv1.sheets.ItemSheet);
+  foundry.documents.collections.Items.registerSheet('myriad-system', MyriadSystemItemSheet, {
     makeDefault: true,
     label: 'MYRIAD_SYSTEM.SheetLabels.Item',
   });

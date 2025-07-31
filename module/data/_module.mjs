@@ -8,3 +8,5 @@ export {default as MyriadSystemItemBase} from "./base-item.mjs";
 export {default as MyriadSystemItem} from "./item-item.mjs";
 export {default as MyriadSystemFeature} from "./item-feature.mjs";
 export {default as MyriadSystemSpell} from "./item-spell.mjs";
+export {default as MyriadSystemCompetence} from "./item-competence.mjs";
+export {default as MyriadSystemVoie} from "./item-voie.mjs";

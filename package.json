@@ -4,7 +4,8 @@
   "description": "CSS compiler for the MyriadSystem system",
   "scripts": {
     "build": "sass src/scss/myriad-system.scss css/myriad-system.css --style=expanded --no-source-map",
-    "watch": "sass src/scss/myriad-system.scss css/myriad-system.css --style=expanded --source-map --watch"
+    "watch": "sass src/scss/myriad-system.scss css/myriad-system.css --style=expanded --source-map --watch",
+    "validate": "node validate-templates.js"
   },
   "browserslist": [
     "last 3 versions"
@@ -13,6 +14,7 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "sass": "^1.53.0"
+    "handlebars": "^4.7.8",
+    "sass": "^1.89.2"
   }
 }

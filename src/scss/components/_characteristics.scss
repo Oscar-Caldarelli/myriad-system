@@ -1,0 +1,70 @@
+/* Characteristics layout */
+.characteristics-container {
+  display: flex;
+  gap: 20px;
+  margin: 10px 0;
+}
+
+.characteristics-column {
+  flex: 1;
+  border: 1px solid $c-faint;
+  border-radius: 5px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+
+  .column-header {
+    text-align: center;
+    margin: 0 0 15px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid $c-faint;
+    font-weight: bold;
+    color: $c-dark;
+  }
+
+  &.physical .column-header {
+    color: #8b4513; // Brown for physical
+  }
+
+  &.mental .column-header {
+    color: #4682b4; // Steel blue for mental
+  }
+}
+
+.characteristics-separator {
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, $c-faint, transparent);
+  margin: 10px 0;
+}
+
+.characteristic {
+  margin-bottom: 10px;
+
+  &-label {
+    flex: 0 0 120px;
+    font-weight: bold;
+    color: $c-dark;
+  }
+
+  &-content {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex: 1;
+
+    input {
+      flex: 0 0 50px;
+      text-align: center;
+      border: 1px solid $c-beige;
+      border-radius: 3px;
+      padding: 2px 5px;
+    }
+  }
+
+  &-max {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    color: #666;
+    font-size: 14px;
+  }
+}

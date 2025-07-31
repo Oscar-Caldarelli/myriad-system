@@ -1,0 +1,112 @@
+/* Updated characteri/* Character voies display */
+.charname-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.character-voies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 5px;
+  font-style: italic;
+  
+  .voie-label {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .voie-badge {
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 10px;
+    background-color: #e6e0d4;
+    color: #5e4a2e;
+    cursor: pointer;
+    
+    &:hover {
+      background-color: #d6c7ae;
+    }
+  }
+}
+
+/* Resources container */
+.resources-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 5px;
+  
+  .resource {
+    padding: 5px;
+    border-radius: 3px;
+    
+    &.health-resource {
+      background-color: rgba(217, 87, 87, 0.1);
+    }
+    
+    &.xp-resource {
+      background-color: rgba(142, 192, 124, 0.1);
+    }
+    
+    &.magic-resource {
+      background-color: rgba(90, 154, 232, 0.1);
+      grid-column: span 2;
+    }
+    
+    .xp-unspent {
+      font-weight: bold;
+      color: #2e8b57;
+    }
+    
+    .xp-total {
+      color: #666;
+    }
+  }
+}ing */
+.characteristic {
+  &-modifiers {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 5px;
+    font-size: 14px;
+  }
+
+  &-bonus {
+    color: #2e8b57; /* Green */
+    font-weight: bold;
+  }
+
+  &-malus {
+    color: #b22222; /* Red */
+    font-weight: bold;
+  }
+}
+
+/* Voie display under character name */
+.character-voie {
+  margin-bottom: 8px;
+  font-style: italic;
+  color: #666;
+
+  .voie-label {
+    font-size: 14px;
+  }
+}
+
+/* Tab styling adjustments */
+.myriad-system .sheet-tabs .item {
+  &[data-tab="characteristics"] {
+    color: #4b5563;
+  }
+  
+  &[data-tab="features"] {
+    color: #1e40af;
+  }
+  
+  &[data-tab="magic"] {
+    color: #7e22ce;
+  }
+}

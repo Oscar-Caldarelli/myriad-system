@@ -57,7 +57,26 @@
       "Magic": "Magie",
       "Inventory": "Inventaire",
       "Features": "Capacités",
+      "Competences": "Compétences",
       "Spells": "Sorts"
+    },
+    "NoVoie": "Aucune Voie Sélectionnée",
+    "XP": {
+      "label": "Points d'Expérience",
+      "unspent": "PX Non Dépensés",
+      "total": "PX Totaux",
+      "spent": "PX Dépensés"
+    },
+    "Grade": {
+      "label": "Grade",
+      "I": "I",
+      "II": "II",
+      "III": "III",
+      "IV": "IV",
+      "V": "V"
+    },
+    "Competence": {
+      "Unique": "Capacité Unique"
     },
     "Effect": {
       "Source": "Source",

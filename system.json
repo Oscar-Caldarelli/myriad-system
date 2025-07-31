@@ -16,10 +16,10 @@
       "discord": ".pizzaWizard"
     }
   ],
-  "url": "Replace this with a link to your public repository",
+  "url": "https://github.com/Oscar-Caldarelli/myriad-system",
   "license": "LICENSE.txt",
   "readme": "README.md",
-  "bugs": "Replace this with a link to file issues or tickets",
+  "bugs": "https://github.com/Oscar-Caldarelli/myriad-system/issues",
   "changelog": "CHANGELOG.md",
   "media": [
     {
@@ -30,7 +30,7 @@
   ],
   "version": "1.0.0",
   "compatibility": {
-    "minimum": "13",
+    "minimum": 13,
     "verified": "13",
     "maximum": "13"
   },
@@ -38,25 +38,25 @@
   "styles": ["css/myriad-system.css"],
   "languages": [
     {
-      "lang": "fr",
-      "name": "Français",
-      "path": "lang/fr.json",
-      "flags": {"myriad-system": {"default": true}}
-    },
-    {
       "lang": "en",
       "name": "English",
       "path": "lang/en.json"
+    },
+    {
+      "lang": "fr",
+      "name": "Français",
+      "path": "lang/fr.json"
     }
   ],
+  "defaultLanguage": "en",
   "packs": [],
   "packFolders": [],
   "socket": false,
-  "manifest": "Replace this with a link to the /latest release system.json so people can receive updates after they've installed the system",
-  "download": "This must link to a .zip file of the current version",
+  "manifest": "https://github.com/Oscar-Caldarelli/myriad-system/releases/latest/download/system.json",
+  "download": "https://github.com/Oscar-Caldarelli/myriad-system/releases/download/2.0.0/myriad-system.zip",
   "background": "systems/myriad-system/assets/anvil-impact.png",
-  "gridDistance": 5,
-  "gridUnits": "ft",
+  "gridDistance": 1,
+  "gridUnits": "m",
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": "power"
 }

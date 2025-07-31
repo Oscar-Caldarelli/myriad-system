@@ -34,7 +34,18 @@
   {{#if item.system.acquisition.price.value}}
   <span class="cost">
     <i class="fas fa-coins"></i>
-    {{item.system.acquisition.price.value}} {{localize (concat "MYRIAD_SYSTEM.Acquisition.currencies." item.system.acquisition.price.currency)}}
+    {{item.system.acquisition.price.value}} 
+    {{#if item.system.acquisition.price.currency}}
+      {{#ifequal item.system.acquisition.price.currency "po"}}
+        {{localize "MYRIAD_SYSTEM.Acquisition.currencies.po"}}
+      {{/ifequal}}
+      {{#ifequal item.system.acquisition.price.currency "pa"}}
+        {{localize "MYRIAD_SYSTEM.Acquisition.currencies.pa"}}
+      {{/ifequal}}
+      {{#ifequal item.system.acquisition.price.currency "pc"}}
+        {{localize "MYRIAD_SYSTEM.Acquisition.currencies.pc"}}
+      {{/ifequal}}
+    {{/if}}
   </span>
   {{/if}}
 </div>
@@ -89,19 +100,3 @@
   {{/if}}
 </div>
 {{/if}}
-        <a
-          class='item-control item-edit'
-          title='{{localize "DOCUMENT.Edit" type='feature'}}'
-        >
-          <i class='fas fa-edit'></i>
-        </a>
-        <a
-          class='item-control item-delete'
-          title='{{localize "DOCUMENT.Delete" type='feature'}}'
-        >
-          <i class='fas fa-trash'></i>
-        </a>
-      </div>
-    </li>
-  {{/each}}
-</ol>
