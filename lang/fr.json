@@ -15,7 +15,7 @@
     },
     "ItemType": {
       "item": "Objet",
-      "feature": "Capacité",
+      "feature": "Trait",
       "spell": "Sort",
       "domain": "Domaine",
       "art": "Art",
@@ -56,7 +56,7 @@
       "Characteristics": "Caractéristiques",
       "Magic": "Magie",
       "Inventory": "Inventaire",
-      "Features": "Capacités",
+      "Features": "Traits",
       "Competences": "Compétences",
       "Spells": "Sorts"
     },
@@ -76,7 +76,7 @@
       "V": "V"
     },
     "Competence": {
-      "Unique": "Capacité Unique"
+      "Unique": "Trait Unique"
     },
     "Effect": {
       "Source": "Source",
@@ -94,7 +94,7 @@
     },
     "Item": {
       "item": "Objet",
-      "feature": "Capacité",
+      "feature": "Trait",
       "spell": "Sort"
     }
   }

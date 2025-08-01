@@ -55,6 +55,28 @@ export default class MyriadSystemCharacter extends MyriadSystemActorBase {
         characteristic.label = game.i18n.localize(CONFIG.MYRIAD_SYSTEM.characteristics?.[key]) ?? key;
       }
     }
+
+    // Calculate health max based on Puissance + bonus
+    if (this.characteristics?.puissance && this.health) {
+      const puissanceValue = this.characteristics.puissance.value || 0;
+      const puissanceBonus = this.characteristics.puissance.bonus || 0;
+      const newMaxHealth = puissanceValue + puissanceBonus;
+      
+      // Update max health if it has changed
+      if (this.health.max !== newMaxHealth) {
+        this.health.max = newMaxHealth;
+        
+        // If current health is higher than new max, adjust it
+        if (this.health.value > newMaxHealth) {
+          this.health.value = newMaxHealth;
+        }
+      }
+    }
+
+    // Calculate unspent XP
+    if (this.xp) {
+      this.xp.unspent = Math.max(0, (this.xp.earned || 0) - (this.xp.value || 0));
+    }
   }
 
   getRollData() {

@@ -48,9 +48,8 @@ Hooks.once('init', function () {
   CONFIG.Item.documentClass = MyriadSystemItem;
   CONFIG.Item.dataModels = {
     item: models.MyriadSystemItem,
-    feature: models.MyriadSystemFeature,
+    competence: models.MyriadSystemFeature, // Unified with features
     spell: models.MyriadSystemSpell,
-    competence: models.MyriadSystemCompetence,
     voie: models.MyriadSystemVoie
   }
 

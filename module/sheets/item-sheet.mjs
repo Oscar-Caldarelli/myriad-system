@@ -30,9 +30,12 @@ export class MyriadSystemItemSheet extends foundry.appv1.sheets.ItemSheet {
     // Return a single sheet for all item types.
     // return `${path}/item-sheet.hbs`;
 
+    // Map competence type to feature template since they're now unified
+    const itemType = this.item.type === 'competence' ? 'feature' : this.item.type;
+
     // Alternatively, you could use the following return statement to do a
     // unique item sheet by type, like `weapon-sheet.hbs`.
-    return `${path}/item-${this.item.type}-sheet.hbs`;
+    return `${path}/item-${itemType}-sheet.hbs`;
   }
 
   /* -------------------------------------------- */

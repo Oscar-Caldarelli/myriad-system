@@ -18,7 +18,7 @@ export class MyriadSystemActorSheet extends foundry.appv1.sheets.ActorSheet {
         {
           navSelector: '.sheet-tabs',
           contentSelector: '.sheet-body',
-          initial: 'features',
+          initial: 'competences',
         },
       ],
     });
@@ -90,56 +90,12 @@ export class MyriadSystemActorSheet extends foundry.appv1.sheets.ActorSheet {
       // List all voies (paths) for the character
       context.allVoies = [...(context.paths || [])]; // Create a shallow copy
       
-      // Calculate health points based on Puissance - don't modify system directly
-      if (context.system.characteristics && context.system.characteristics.puissance) {
-        const puissanceValue = Number(context.system.characteristics.puissance.value || 0);
-        
-        // Calculate health for display only (don't modify the actual system data)
-        if (!context.system.health) {
-          context.calculatedHealth = {
-            value: puissanceValue,
-            max: puissanceValue
-          };
-        } else {
-          context.calculatedHealth = {
-            value: context.system.health.value !== undefined ? context.system.health.value : puissanceValue,
-            max: context.system.health.max !== undefined ? context.system.health.max : puissanceValue
-          };
-        }
-      }
-      
-      // Calculate total XP (earned and unspent) - don't modify system directly
-      if (context.system.xp) {
-        const earned = Number(context.system.xp.earned || 0);
-        const spent = Number(context.system.xp.value || 0);
-        context.calculatedXP = {
-          earned: earned,
-          spent: spent,
-          unspent: Math.max(0, earned - spent)
-        };
-      }
-      
       // Determine if magic points should be displayed (character has arts and domains)
       context.hasMagic = Boolean(
         (context.arts && context.arts.length > 0) && 
         (context.domains && context.domains.length > 0)
       );
       
-      // Calculate total characteristic values including bonuses and maluses - don't modify system directly
-      context.calculatedCharacteristics = {};
-      if (context.system.characteristics) {
-        for (const [key, characteristic] of Object.entries(context.system.characteristics)) {
-          if (characteristic) {
-            const value = Number(characteristic.value || 0);
-            const bonus = Number(characteristic.bonus || 0);
-            const malus = Number(characteristic.malus || 0);
-            context.calculatedCharacteristics[key] = {
-              ...characteristic,
-              total: value + bonus - malus
-            };
-          }
-        }
-      }
     } catch (error) {
       console.error("Error in _prepareCharacterData:", error);
     }
@@ -264,6 +220,12 @@ export class MyriadSystemActorSheet extends foundry.appv1.sheets.ActorSheet {
 
     // Rollable abilities.
     html.on('click', '.rollable', this._onRoll.bind(this));
+
+    // Characteristic rolls
+    html.on('click', '.characteristic-roll', this._onCharacteristicRoll.bind(this));
+
+    // XP controls
+    html.on('click', '.xp-control', this._onXPControl.bind(this));
 
     // Drag events for macros.
     if (this.actor.isOwner) {
@@ -444,6 +406,105 @@ export class MyriadSystemActorSheet extends foundry.appv1.sheets.ActorSheet {
       }
     } catch (error) {
       console.error("Error applying voie characteristic modifiers:", error);
+    }
+  }
+
+  /**
+   * Handle characteristic rolls
+   * @param {Event} event   The originating click event
+   * @private
+   */
+  async _onCharacteristicRoll(event) {
+    event.preventDefault();
+    const element = event.currentTarget;
+    const characteristic = element.dataset.characteristic;
+    
+    if (!characteristic || !this.actor.system.characteristics?.[characteristic]) {
+      return ui.notifications.warn("Caractéristique non trouvée");
+    }
+
+    const charData = this.actor.system.characteristics[characteristic];
+    const charValue = charData.value || 0;
+    const bonus = charData.bonus || 0;
+    const malus = charData.malus || 0;
+    const total = charValue + bonus - malus;
+
+    // Create roll formula
+    const formula = `1d100`;
+    const roll = new Roll(formula);
+    await roll.evaluate();
+
+    // Determine success/failure
+    const isSuccess = roll.total <= total;
+    const isCriticalSuccess = roll.total <= 5;
+    const isCriticalFailure = roll.total >= 95;
+    
+    let resultClass = '';
+    let resultText = '';
+    
+    if (isCriticalFailure) {
+      resultClass = 'critical-failure';
+      resultText = 'Échec Critique!';
+    } else if (isCriticalSuccess) {
+      resultClass = 'critical-success';
+      resultText = 'Réussite Critique!';
+    } else if (isSuccess) {
+      resultClass = 'success';
+      resultText = 'Réussite';
+    } else {
+      resultClass = 'failure';
+      resultText = 'Échec';
+    }
+
+    // Create chat message
+    const messageContent = `
+      <div class="dice-roll">
+        <div class="dice-result">
+          <h4 class="dice-formula">${characteristic.charAt(0).toUpperCase() + characteristic.slice(1)} (${total})</h4>
+          <div class="dice-tooltip">
+            <div class="dice-parts">
+              <span class="part-header">Résultat: </span>
+              <span class="part-formula">${roll.result}</span>
+            </div>
+          </div>
+          <h4 class="dice-total ${resultClass}">${resultText}</h4>
+        </div>
+      </div>
+    `;
+
+    // Send message to chat
+    await ChatMessage.create({
+      user: game.user.id,
+      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+      content: messageContent,
+      type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+      roll: roll
+    });
+  }
+
+  /**
+   * Handle XP control buttons
+   * @param {Event} event   The originating click event
+   * @private
+   */
+  async _onXPControl(event) {
+    event.preventDefault();
+    const element = event.currentTarget;
+    const action = element.dataset.action;
+    
+    if (!this.actor.system.xp) return;
+
+    const currentEarned = this.actor.system.xp.earned || 0;
+    let newEarned = currentEarned;
+
+    if (action === 'increase-xp') {
+      newEarned = currentEarned + 1;
+    } else if (action === 'decrease-xp') {
+      newEarned = Math.max(0, currentEarned - 1);
+    }
+
+    if (newEarned !== currentEarned) {
+      await this.actor.update({ 'system.xp.earned': newEarned });
     }
   }
 

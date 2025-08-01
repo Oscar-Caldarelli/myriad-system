@@ -24,7 +24,66 @@
 
     {{!-- Attributes Tab --}}
     <div class="tab attributes" data-group="primary" data-tab="attributes">
-      {{!-- As you add new fields, add them in here! --}}
+      {{!-- Level system --}}
+      <div class="form-group">
+        <label>{{localize "MYRIAD_SYSTEM.ItemAttributes.Level"}}</label>
+        <div class="form-fields">
+          <div class="item-level">
+            {{#times system.level.max}}
+            <i class="fas {{#if (lte this system.level.value)}}fa-circle{{else}}fa-circle-o{{/if}}"></i>
+            {{/times}}
+          </div>
+          <input type="range" name="system.level.value" value="{{system.level.value}}" min="1" max="{{system.level.max}}" data-dtype="Number"/>
+        </div>
+      </div>
+
+      {{!-- Grade system --}}
+      <div class="form-group">
+        <label>{{localize "MYRIAD_SYSTEM.Grade.label"}}</label>
+        <div class="form-fields">
+          <select name="system.grade" data-dtype="Number">
+            {{#select system.grade}}
+            <option value="1">{{localize "MYRIAD_SYSTEM.Grade.I"}}</option>
+            <option value="2">{{localize "MYRIAD_SYSTEM.Grade.II"}}</option>
+            <option value="3">{{localize "MYRIAD_SYSTEM.Grade.III"}}</option>
+            <option value="4">{{localize "MYRIAD_SYSTEM.Grade.IV"}}</option>
+            <option value="5">{{localize "MYRIAD_SYSTEM.Grade.V"}}</option>
+            {{/select}}
+          </select>
+        </div>
+      </div>
+
+      {{!-- XP Cost --}}
+      <div class="form-group">
+        <label>{{localize "MYRIAD_SYSTEM.XP.Cost"}}</label>
+        <div class="form-fields">
+          <input type="number" name="system.xpCost" value="{{system.xpCost}}" data-dtype="Number"/>
+        </div>
+      </div>
+
+      {{!-- Associated Characteristic --}}
+      <div class="form-group">
+        <label>{{localize "MYRIAD_SYSTEM.ItemAttributes.Characteristic"}}</label>
+        <div class="form-fields">
+          <select name="system.characteristic">
+            {{#select system.characteristic}}
+            <option value="">{{localize "None"}}</option>
+            <option value="puissance">{{localize config.characteristics.puissance}}</option>
+            <option value="coordination">{{localize config.characteristics.coordination}}</option>
+            <option value="ingeniosite">{{localize config.characteristics.ingeniosite}}</option>
+            <option value="perspicacite">{{localize config.characteristics.perspicacite}}</option>
+            {{/select}}
+          </select>
+        </div>
+      </div>
+
+      {{!-- Unique ability flag --}}
+      <div class="form-group">
+        <label>{{localize "MYRIAD_SYSTEM.ItemAttributes.IsUnique"}}</label>
+        <div class="form-fields">
+          <input type="checkbox" name="system.isUnique" {{checked system.isUnique}}/>
+        </div>
+      </div>
     </div>
 
     {{!-- Effects Tab --}}

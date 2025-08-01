@@ -26,83 +26,156 @@
   min-height: 420px;
 
   .sheet-header {
-    flex: 0 0 auto; // Changed from fixed height to auto
-    overflow: visible; // Changed from hidden to visible
+    flex: 0 0 auto;
+    overflow: visible;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: flex-start;
+    align-items: flex-start;
     margin-bottom: 15px;
-    padding-bottom: 10px;
+    padding: 10px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    min-height: 120px;
 
     .profile-img {
       flex: 0 0 100px;
       height: 100px;
-      margin-right: 10px;
+      margin-right: 15px;
       border-radius: 5px;
       border: 1px solid #ddd;
     }
 
     .header-fields {
       flex: 1;
-      min-height: 120px;
       display: flex;
       flex-direction: column;
-    }
+      min-height: 100px;
+      gap: 10px;
 
-    .charname {
-      height: auto;
-      padding: 0px;
-      margin: 0 0 5px 0;
-      
-      input {
-        width: 100%;
-        height: 100%;
-        margin: 0;
+      .charname-container {
+        flex: 0 0 auto;
+        
+        .charname {
+          margin: 0 0 10px 0;
+          padding: 0;
+          height: auto;
+          
+          input {
+            width: 100%;
+            height: 32px;
+            margin: 0;
+            font-size: 18px;
+            font-weight: bold;
+          }
+        }
+
+        .character-voies {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 5px;
+          margin-bottom: 10px;
+
+          .voie-badge {
+            background: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            padding: 2px 6px;
+            font-size: 12px;
+            white-space: nowrap;
+          }
+
+          .voie-label {
+            font-style: italic;
+            color: #666;
+            font-size: 12px;
+          }
+        }
       }
-    }
-  }
 
-  .resource {
-    width: 50%;
-    height: 40px;
-    margin-top: 10px;
-    float: left;
-    text-align: center;
+      .resources-container {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: flex-start;
 
-    input {
-      width: 100px;
-      height: 28px;
-    }
+        .resource {
+          flex: 0 0 calc(33% - 7px);
+          min-width: 120px;
+          height: auto;
+          margin: 0;
+          text-align: center;
+          
+          .resource-label {
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 2px;
+            display: block;
+          }
 
-    .resource-label {
-      font-size: 12px;
-      font-weight: bold;
-    }
-  }
+          .resource-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
 
-  .sheet-tabs {
-    flex: 0 0 30px;
-    border-top: 1px solid #AAA;
-    border-bottom: 1px solid #AAA;
+            input {
+              width: 40px;
+              height: 24px;
+              text-align: center;
+              font-size: 12px;
+            }
 
-    .item {
-      font-weight: bold;
-    }
+            .sep {
+              font-weight: bold;
+              font-size: 14px;
+            }
 
-    .item.active {
-      text-decoration: underline;
-      text-shadow: none;
-    }
-  }
+            .xp-unspent, .xp-total {
+              font-size: 12px;
+              font-weight: bold;
+              min-width: 20px;
+              text-align: center;
+            }
 
-  .sheet-body {
-    overflow: hidden;
-    
-    .tab {
-      height: 100%;
-      overflow-y: auto;
+            .health-max {
+              font-size: 12px;
+              font-weight: bold;
+              min-width: 20px;
+              text-align: center;
+              color: #666;
+              background: #f5f5f5;
+              border: 1px solid #ddd;
+              border-radius: 3px;
+              padding: 2px 4px;
+            }
+
+            .xp-control {
+              background: #f8f8f8;
+              border: 1px solid #ccc;
+              border-radius: 3px;
+              padding: 2px 4px;
+              cursor: pointer;
+              font-size: 10px;
+              transition: background-color 0.2s;
+
+              &:hover {
+                background: #e8e8e8;
+              }
+
+              &:active {
+                background: #d8d8d8;
+              }
+
+              i {
+                font-size: 8px;
+              }
+            }
+          }
+        }
+      }
     }
   }
 
@@ -116,12 +189,60 @@
 
       .characteristic-label {
         font-weight: bold;
+        min-width: 120px;
       }
 
       .characteristic-content {
         display: flex;
         align-items: center;
         justify-content: center;
+        gap: 5px;
+
+        input {
+          flex: 0 0 60px;
+          text-align: center;
+        }
+
+        .characteristic-roll {
+          background: #f0f0f0;
+          border: 1px solid #ccc;
+          border-radius: 3px;
+          padding: 4px 6px;
+          cursor: pointer;
+          transition: all 0.2s;
+          
+          &:hover {
+            background: #e0e0e0;
+            transform: scale(1.05);
+          }
+
+          &:active {
+            background: #d0d0d0;
+          }
+
+          i {
+            font-size: 14px;
+            color: #444;
+          }
+        }
+
+        .characteristic-modifiers {
+          display: flex;
+          gap: 3px;
+          margin-left: 5px;
+
+          .characteristic-bonus {
+            color: #2e8b57;
+            font-weight: bold;
+            font-size: 11px;
+          }
+
+          .characteristic-malus {
+            color: #dc143c;
+            font-weight: bold;
+            font-size: 11px;
+          }
+        }
       }
     }
   }
@@ -213,5 +334,28 @@
         object-fit: contain;
       }
     }
+  }
+}
+
+/* Styles pour les résultats de jets de dés */
+.dice-roll {
+  .critical-success {
+    color: #2e8b57;
+    font-weight: bold;
+  }
+
+  .success {
+    color: #4caf50;
+    font-weight: bold;
+  }
+
+  .failure {
+    color: #f44336;
+    font-weight: bold;
+  }
+
+  .critical-failure {
+    color: #d32f2f;
+    font-weight: bold;
   }
 }

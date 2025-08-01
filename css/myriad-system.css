@@ -437,72 +437,240 @@
   font-size: 14px;
 }
 
+/* Updated characteri/* Character voies display */
+.charname-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.character-voies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 5px;
+  font-style: italic;
+}
+.character-voies .voie-label {
+  font-size: 14px;
+  color: #666;
+}
+.character-voies .voie-badge {
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  background-color: #e6e0d4;
+  color: #5e4a2e;
+  cursor: pointer;
+}
+.character-voies .voie-badge:hover {
+  background-color: #d6c7ae;
+}
+
+/* Resources container */
+.resources-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 5px;
+}
+.resources-container .resource {
+  padding: 5px;
+  border-radius: 3px;
+}
+.resources-container .resource.health-resource {
+  background-color: rgba(217, 87, 87, 0.1);
+}
+.resources-container .resource.xp-resource {
+  background-color: rgba(142, 192, 124, 0.1);
+}
+.resources-container .resource.magic-resource {
+  background-color: rgba(90, 154, 232, 0.1);
+  grid-column: span 2;
+}
+.resources-container .resource .xp-unspent {
+  font-weight: bold;
+  color: #2e8b57;
+}
+.resources-container .resource .xp-total {
+  color: #666;
+}
+
+/* Characteristic modifiers styling */
+.characteristic-modifiers {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 5px;
+  font-size: 14px;
+}
+.characteristic-bonus {
+  color: #2e8b57; /* Green */
+  font-weight: bold;
+}
+.characteristic-malus {
+  color: #b22222; /* Red */
+  font-weight: bold;
+}
+
+/* Voie display under character name */
+.character-voie {
+  margin-bottom: 8px;
+  font-style: italic;
+  color: #666;
+}
+.character-voie .voie-label {
+  font-size: 14px;
+}
+
+/* Tab styling adjustments */
+.myriad-system .sheet-tabs .item[data-tab=characteristics] {
+  color: #4b5563;
+}
+.myriad-system .sheet-tabs .item[data-tab=features] {
+  color: #1e40af;
+}
+.myriad-system .sheet-tabs .item[data-tab=magic] {
+  color: #7e22ce;
+}
+
 /* Styles spécifiques au système Myriad */
 .myriad-system.sheet.actor {
   min-width: 560px;
   min-height: 420px;
 }
 .myriad-system.sheet.actor .sheet-header {
-  flex: 0 0 120px;
-  overflow: hidden;
+  flex: 0 0 auto;
+  overflow: visible;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: flex-start;
-  margin-bottom: 10px;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  min-height: 120px;
 }
 .myriad-system.sheet.actor .sheet-header .profile-img {
   flex: 0 0 100px;
   height: 100px;
-  margin-right: 10px;
+  margin-right: 15px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
 }
 .myriad-system.sheet.actor .sheet-header .header-fields {
   flex: 1;
-  height: 100px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100px;
+  gap: 10px;
 }
-.myriad-system.sheet.actor .sheet-header .charname {
-  height: 50px;
-  padding: 0px;
-  margin: 5px 0;
+.myriad-system.sheet.actor .sheet-header .header-fields .charname-container {
+  flex: 0 0 auto;
 }
-.myriad-system.sheet.actor .sheet-header .charname input {
+.myriad-system.sheet.actor .sheet-header .header-fields .charname-container .charname {
+  margin: 0 0 10px 0;
+  padding: 0;
+  height: auto;
+}
+.myriad-system.sheet.actor .sheet-header .header-fields .charname-container .charname input {
   width: 100%;
-  height: 100%;
+  height: 32px;
   margin: 0;
+  font-size: 18px;
+  font-weight: bold;
 }
-.myriad-system.sheet.actor .resource {
-  width: 50%;
-  height: 40px;
-  margin-top: 10px;
-  float: left;
+.myriad-system.sheet.actor .sheet-header .header-fields .charname-container .character-voies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+.myriad-system.sheet.actor .sheet-header .header-fields .charname-container .character-voies .voie-badge {
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 2px 6px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.myriad-system.sheet.actor .sheet-header .header-fields .charname-container .character-voies .voie-label {
+  font-style: italic;
+  color: #666;
+  font-size: 12px;
+}
+.myriad-system.sheet.actor .sheet-header .header-fields .resources-container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: flex-start;
+}
+.myriad-system.sheet.actor .sheet-header .header-fields .resources-container .resource {
+  flex: 0 0 calc(33% - 7px);
+  min-width: 120px;
+  height: auto;
+  margin: 0;
   text-align: center;
 }
-.myriad-system.sheet.actor .resource input {
-  width: 100px;
-  height: 28px;
+.myriad-system.sheet.actor .sheet-header .header-fields .resources-container .resource .resource-label {
+  font-size: 11px;
+  font-weight: bold;
+  margin-bottom: 2px;
+  display: block;
 }
-.myriad-system.sheet.actor .resource .resource-label {
+.myriad-system.sheet.actor .sheet-header .header-fields .resources-container .resource .resource-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+.myriad-system.sheet.actor .sheet-header .header-fields .resources-container .resource .resource-content input {
+  width: 40px;
+  height: 24px;
+  text-align: center;
+  font-size: 12px;
+}
+.myriad-system.sheet.actor .sheet-header .header-fields .resources-container .resource .resource-content .sep {
+  font-weight: bold;
+  font-size: 14px;
+}
+.myriad-system.sheet.actor .sheet-header .header-fields .resources-container .resource .resource-content .xp-unspent, .myriad-system.sheet.actor .sheet-header .header-fields .resources-container .resource .resource-content .xp-total {
   font-size: 12px;
   font-weight: bold;
+  min-width: 20px;
+  text-align: center;
 }
-.myriad-system.sheet.actor .sheet-tabs {
-  flex: 0 0 30px;
-  border-top: 1px solid #AAA;
-  border-bottom: 1px solid #AAA;
-}
-.myriad-system.sheet.actor .sheet-tabs .item {
+.myriad-system.sheet.actor .sheet-header .header-fields .resources-container .resource .resource-content .health-max {
+  font-size: 12px;
   font-weight: bold;
+  min-width: 20px;
+  text-align: center;
+  color: #666;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 2px 4px;
 }
-.myriad-system.sheet.actor .sheet-tabs .item.active {
-  text-decoration: underline;
-  text-shadow: none;
+.myriad-system.sheet.actor .sheet-header .header-fields .resources-container .resource .resource-content .xp-control {
+  background: #f8f8f8;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 2px 4px;
+  cursor: pointer;
+  font-size: 10px;
+  transition: background-color 0.2s;
 }
-.myriad-system.sheet.actor .sheet-body {
-  overflow: hidden;
+.myriad-system.sheet.actor .sheet-header .header-fields .resources-container .resource .resource-content .xp-control:hover {
+  background: #e8e8e8;
 }
-.myriad-system.sheet.actor .sheet-body .tab {
-  height: 100%;
-  overflow-y: auto;
+.myriad-system.sheet.actor .sheet-header .header-fields .resources-container .resource .resource-content .xp-control:active {
+  background: #d8d8d8;
+}
+.myriad-system.sheet.actor .sheet-header .header-fields .resources-container .resource .resource-content .xp-control i {
+  font-size: 8px;
 }
 .myriad-system.sheet.actor .characteristics .characteristic {
   margin: 5px 0;
@@ -512,11 +680,51 @@
 }
 .myriad-system.sheet.actor .characteristics .characteristic .characteristic-label {
   font-weight: bold;
+  min-width: 120px;
 }
 .myriad-system.sheet.actor .characteristics .characteristic .characteristic-content {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 5px;
+}
+.myriad-system.sheet.actor .characteristics .characteristic .characteristic-content input {
+  flex: 0 0 60px;
+  text-align: center;
+}
+.myriad-system.sheet.actor .characteristics .characteristic .characteristic-content .characteristic-roll {
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 4px 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.myriad-system.sheet.actor .characteristics .characteristic .characteristic-content .characteristic-roll:hover {
+  background: #e0e0e0;
+  transform: scale(1.05);
+}
+.myriad-system.sheet.actor .characteristics .characteristic .characteristic-content .characteristic-roll:active {
+  background: #d0d0d0;
+}
+.myriad-system.sheet.actor .characteristics .characteristic .characteristic-content .characteristic-roll i {
+  font-size: 14px;
+  color: #444;
+}
+.myriad-system.sheet.actor .characteristics .characteristic .characteristic-content .characteristic-modifiers {
+  display: flex;
+  gap: 3px;
+  margin-left: 5px;
+}
+.myriad-system.sheet.actor .characteristics .characteristic .characteristic-content .characteristic-modifiers .characteristic-bonus {
+  color: #2e8b57;
+  font-weight: bold;
+  font-size: 11px;
+}
+.myriad-system.sheet.actor .characteristics .characteristic .characteristic-content .characteristic-modifiers .characteristic-malus {
+  color: #dc143c;
+  font-weight: bold;
+  font-size: 11px;
 }
 .myriad-system.sheet.actor .items-list {
   list-style: none;
@@ -589,4 +797,22 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+/* Styles pour les résultats de jets de dés */
+.dice-roll .critical-success {
+  color: #2e8b57;
+  font-weight: bold;
+}
+.dice-roll .success {
+  color: #4caf50;
+  font-weight: bold;
+}
+.dice-roll .failure {
+  color: #f44336;
+  font-weight: bold;
+}
+.dice-roll .critical-failure {
+  color: #d32f2f;
+  font-weight: bold;
 }
