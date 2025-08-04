@@ -76,7 +76,8 @@
       "V": "V"
     },
     "Competence": {
-      "Unique": "Trait Unique"
+      "Unique": "Trait Unique",
+      "Passive": "Capacité Passive"
     },
     "Effect": {
       "Source": "Source",
@@ -84,6 +85,23 @@
       "Temporary": "Effets Temporaires",
       "Passive": "Effets Passifs",
       "Inactive": "Effets Inactifs"
+    },
+    
+    "UI": {
+      "Add": "Ajouter",
+      "Delete": "Supprimer",
+      "AddPrerequisite": "Ajouter un prérequis"
+    },
+    
+    "ItemAttributes": {
+      "Grade": "Grade",
+      "XPCost": "Coût en PX",
+      "IsPassive": "Capacité Passive",
+      "Tags": "Étiquettes",
+      "TagsHint": "Séparées par des virgules (combat, social, arcane...)",
+      "Benefits": "Avantages",
+      "Drawbacks": "Inconvénients",
+      "Acquisition": "Acquisition"
     }
   },
 

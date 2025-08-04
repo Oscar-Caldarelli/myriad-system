@@ -97,4 +97,25 @@ function registerHandlebarsHelpers() {
   Handlebars.registerHelper('eq', function(v1, v2) {
     return v1 === v2;
   });
+  
+  // Helper pour concaténer des strings
+  Handlebars.registerHelper('concat', function() {
+    let result = '';
+    for (let i = 0; i < arguments.length - 1; i++) {
+      result += arguments[i];
+    }
+    return result;
+  });
+  
+  // Helper pour convertir un nombre en chiffre romain
+  Handlebars.registerHelper('numberToRoman', function(num) {
+    const romanNumerals = {
+      1: 'I',
+      2: 'II',
+      3: 'III',
+      4: 'IV',
+      5: 'V'
+    };
+    return romanNumerals[num] || num;
+  });
 }

@@ -84,6 +84,23 @@
       "Temporary": "Temporary Effects",
       "Passive": "Passive Effects",
       "Inactive": "Inactive Effects"
+    },
+    
+    "UI": {
+      "Add": "Add",
+      "Delete": "Delete",
+      "AddPrerequisite": "Add Prerequisite"
+    },
+    
+    "ItemAttributes": {
+      "Grade": "Grade",
+      "XPCost": "XP Cost",
+      "IsPassive": "Passive Ability",
+      "Tags": "Tags",
+      "TagsHint": "Separated by commas (combat, social, arcane...)",
+      "Benefits": "Benefits",
+      "Drawbacks": "Drawbacks",
+      "Acquisition": "Acquisition"
     }
   },
 

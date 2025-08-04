@@ -53,3 +53,40 @@
     padding: 0 8px;
   }
 }
+
+// Styles pour la liste des prérequis
+.prerequisites-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+  .prerequisite {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    
+    input {
+      flex: 1;
+      margin-right: 5px;
+    }
+    
+    .delete-prerequisite {
+      flex: 0 0 20px;
+      text-align: center;
+      color: $c-red;
+      
+      &:hover {
+        color: darken($c-red, 10%);
+      }
+    }
+  }
+}
+
+.add-prerequisite {
+  margin-left: 10px;
+  color: $c-green;
+  
+  &:hover {
+    color: darken($c-green, 10%);
+  }
+}

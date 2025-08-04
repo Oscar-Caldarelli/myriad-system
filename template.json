@@ -121,12 +121,12 @@
     },
     "competence": {
       "templates": ["base", "acquirable"],
-      "level": {
-        "value": 1,
-        "max": 5
-      },
-      "characteristic": "",
-      "isUnique": false
+      "grade": 1,
+      "xpCost": 5,
+      "isPassive": false,
+      "benefits": [],
+      "drawbacks": [],
+      "tags": []
     }
   }
 }

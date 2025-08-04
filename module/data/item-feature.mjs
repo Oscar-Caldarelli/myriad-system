@@ -7,15 +7,19 @@ export default class MyriadSystemFeature extends MyriadSystemItemBase {
     const requiredInteger = { required: true, nullable: false, integer: true };
     const baseSchema = super.defineSchema();
 
-    // Add feature-specific fields (same as competence)
+    // Schéma des compétences avec les valeurs essentielles
     const featureSchema = {
-      level: new fields.SchemaField({
-        value: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1, max: 5 }),
-        max: new fields.NumberField({ ...requiredInteger, initial: 5, min: 1, max: 5 })
-      }),
+      // Grade de la compétence (I à V)
       grade: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1, max: 5 }),
-      xpCost: new fields.NumberField({ ...requiredInteger, initial: 5, min: 0 }),
-      isUnique: new fields.BooleanField({ initial: false }) // Whether this is a unique ability vs. a standard feature
+      // Indique si c'est une capacité passive/unique ou une aptitude standard
+      isPassive: new fields.BooleanField({ initial: false }),
+      // Tags pour catégoriser les compétences
+      tags: new fields.ArrayField(new fields.StringField()),
+      // Informations d'acquisition
+      acquisition: new fields.SchemaField({
+        prerequisites: new fields.ArrayField(new fields.StringField()),
+        xpCost: new fields.NumberField({ ...requiredInteger, initial: 5, min: 0 })
+      })
     };
 
     return foundry.utils.mergeObject(baseSchema, featureSchema);

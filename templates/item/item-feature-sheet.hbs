@@ -24,65 +24,61 @@
 
     {{!-- Attributes Tab --}}
     <div class="tab attributes" data-group="primary" data-tab="attributes">
-      {{!-- Level system --}}
+      {{!-- Grade de compétence (I à V) avec pips cliquables --}}
       <div class="form-group">
-        <label>{{localize "MYRIAD_SYSTEM.ItemAttributes.Level"}}</label>
+        <label>{{localize "MYRIAD_SYSTEM.ItemAttributes.Grade"}}</label>
         <div class="form-fields">
-          <div class="item-level">
-            {{#times system.level.max}}
-            <i class="fas {{#if (lte this system.level.value)}}fa-circle{{else}}fa-circle-o{{/if}}"></i>
+          <div class="item-grade grade-pips">
+            {{#times 5}}
+            <i class="grade-pip fas {{#if (lte (toNumber this) (toNumber ../system.grade))}}fa-circle{{else}}fa-circle-o{{/if}}"
+               data-grade="{{this}}"></i>
             {{/times}}
+            <span class="grade-value">{{localize (concat "MYRIAD_SYSTEM.Grade." (numberToRoman system.grade))}}</span>
+            <input type="hidden" name="system.grade" value="{{system.grade}}" data-dtype="Number"/>
           </div>
-          <input type="range" name="system.level.value" value="{{system.level.value}}" min="1" max="{{system.level.max}}" data-dtype="Number"/>
         </div>
       </div>
 
-      {{!-- Grade system --}}
+      {{!-- Capacité passive --}}
       <div class="form-group">
-        <label>{{localize "MYRIAD_SYSTEM.Grade.label"}}</label>
+        <label>{{localize "MYRIAD_SYSTEM.ItemAttributes.IsPassive"}}</label>
         <div class="form-fields">
-          <select name="system.grade" data-dtype="Number">
-            {{#select system.grade}}
-            <option value="1">{{localize "MYRIAD_SYSTEM.Grade.I"}}</option>
-            <option value="2">{{localize "MYRIAD_SYSTEM.Grade.II"}}</option>
-            <option value="3">{{localize "MYRIAD_SYSTEM.Grade.III"}}</option>
-            <option value="4">{{localize "MYRIAD_SYSTEM.Grade.IV"}}</option>
-            <option value="5">{{localize "MYRIAD_SYSTEM.Grade.V"}}</option>
-            {{/select}}
-          </select>
+          <input type="checkbox" name="system.isPassive" {{checked system.isPassive}}/>
         </div>
       </div>
-
-      {{!-- XP Cost --}}
+      
+      {{!-- Tags --}}
       <div class="form-group">
-        <label>{{localize "MYRIAD_SYSTEM.XP.Cost"}}</label>
+        <label>{{localize "MYRIAD_SYSTEM.ItemAttributes.Tags"}}</label>
         <div class="form-fields">
-          <input type="number" name="system.xpCost" value="{{system.xpCost}}" data-dtype="Number"/>
+          <input type="text" name="system.tags" value="{{system.tags}}" data-dtype="String"/>
+          <p class="hint">{{localize "MYRIAD_SYSTEM.ItemAttributes.TagsHint"}}</p>
         </div>
       </div>
-
-      {{!-- Associated Characteristic --}}
+      
+      {{!-- Acquisition --}}
+      <h3>{{localize "MYRIAD_SYSTEM.ItemAttributes.Acquisition"}}</h3>
+      
+      {{!-- Coût en XP --}}
       <div class="form-group">
-        <label>{{localize "MYRIAD_SYSTEM.ItemAttributes.Characteristic"}}</label>
+        <label>{{localize "MYRIAD_SYSTEM.Acquisition.xpCost"}}</label>
         <div class="form-fields">
-          <select name="system.characteristic">
-            {{#select system.characteristic}}
-            <option value="">{{localize "None"}}</option>
-            <option value="puissance">{{localize config.characteristics.puissance}}</option>
-            <option value="coordination">{{localize config.characteristics.coordination}}</option>
-            <option value="ingeniosite">{{localize config.characteristics.ingeniosite}}</option>
-            <option value="perspicacite">{{localize config.characteristics.perspicacite}}</option>
-            {{/select}}
-          </select>
+          <input type="number" name="system.acquisition.xpCost" value="{{system.acquisition.xpCost}}" data-dtype="Number"/>
         </div>
       </div>
-
-      {{!-- Unique ability flag --}}
-      <div class="form-group">
-        <label>{{localize "MYRIAD_SYSTEM.ItemAttributes.IsUnique"}}</label>
-        <div class="form-fields">
-          <input type="checkbox" name="system.isUnique" {{checked system.isUnique}}/>
-        </div>
+      
+      {{!-- Prérequis --}}
+      <div class="form-group stacked">
+        <label>{{localize "MYRIAD_SYSTEM.Acquisition.prerequisites"}}</label>
+        <a class="add-prerequisite" title="{{localize 'MYRIAD_SYSTEM.UI.AddPrerequisite'}}"><i class="fas fa-plus"></i></a>
+        <ol class="prerequisites-list">
+          {{#each system.acquisition.prerequisites as |prerequisite i|}}
+          <li class="prerequisite">
+            <input type="text" name="system.acquisition.prerequisites.{{i}}" value="{{prerequisite}}" />
+            <a class="delete-prerequisite" data-index="{{i}}" title="{{localize 'MYRIAD_SYSTEM.UI.Delete'}}"><i class="fas fa-trash"></i></a>
+          </li>
+          {{/each}}
+        </ol>
       </div>
     </div>
 

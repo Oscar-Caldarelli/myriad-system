@@ -84,12 +84,79 @@ export class MyriadSystemItemSheet extends foundry.appv1.sheets.ItemSheet {
 
     // Everything below here is only needed if the sheet is editable
     if (!this.isEditable) return;
+    
+    // Gestion des prérequis
+    html.on('click', '.add-prerequisite', this._onAddPrerequisite.bind(this));
+    html.on('click', '.delete-prerequisite', this._onDeletePrerequisite.bind(this));
 
-    // Roll handlers, click handlers, etc. would go here.
+    // Gestion des pips de grade
+    html.on('click', '.grade-pip', this._onGradePipClick.bind(this));
 
     // Active Effect management
     html.on('click', '.effect-control', (ev) =>
       onManageActiveEffect(ev, this.item)
     );
+  }
+  
+  /**
+   * Gestion du clic sur un pip de grade
+   * @param {Event} event - L'événement déclencheur
+   * @private
+   */
+  async _onGradePipClick(event) {
+    event.preventDefault();
+    const gradePip = event.currentTarget;
+    const gradeValue = Number(gradePip.dataset.grade);
+    
+    // Mise à jour du grade dans le système
+    await this.item.update({ 'system.grade': gradeValue });
+  }
+  
+  /**
+   * Gestion de l'ajout d'un prérequis
+   * @param {Event} event - L'événement déclencheur
+   * @private
+   */
+  async _onAddPrerequisite(event) {
+    event.preventDefault();
+    const prerequisites = this.item.system.acquisition?.prerequisites || [];
+    return this.item.update({ 'system.acquisition.prerequisites': [...prerequisites, ''] });
+  }
+  
+  /**
+   * Gestion de la suppression d'un prérequis
+   * @param {Event} event - L'événement déclencheur
+   * @private
+   */
+  async _onDeletePrerequisite(event) {
+    event.preventDefault();
+    const index = Number(event.currentTarget.dataset.index);
+    const prerequisites = [...(this.item.system.acquisition?.prerequisites || [])];
+    prerequisites.splice(index, 1);
+    return this.item.update({ 'system.acquisition.prerequisites': prerequisites });
+  }
+  
+  /**
+   * Gestion de l'ajout d'un prérequis
+   * @param {Event} event - L'événement déclencheur
+   * @private
+   */
+  async _onAddPrerequisite(event) {
+    event.preventDefault();
+    const prerequisites = this.item.system.acquisition?.prerequisites || [];
+    return this.item.update({ 'system.acquisition.prerequisites': [...prerequisites, ''] });
+  }
+  
+  /**
+   * Gestion de la suppression d'un prérequis
+   * @param {Event} event - L'événement déclencheur
+   * @private
+   */
+  async _onDeletePrerequisite(event) {
+    event.preventDefault();
+    const index = Number(event.currentTarget.dataset.index);
+    const prerequisites = [...(this.item.system.acquisition?.prerequisites || [])];
+    prerequisites.splice(index, 1);
+    return this.item.update({ 'system.acquisition.prerequisites': prerequisites });
   }
 }

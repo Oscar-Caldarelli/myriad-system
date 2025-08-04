@@ -55,22 +55,17 @@
 <div class="item-description">
   {{{item.system.description}}}
   
-  {{#if item.system.benefits}}
-  <div class="item-benefits">
-    <h4>{{localize "Benefits"}}</h4>
-    <ul>
-    {{#each item.system.benefits}}
-      <li>{{this}}</li>
-    {{/each}}
-    </ul>
+  {{#if item.system.isPassive}}
+  <div class="item-passive">
+    <span>{{localize "MYRIAD_SYSTEM.Competence.Passive"}}</span>
   </div>
   {{/if}}
-
-  {{#if item.system.drawbacks}}
-  <div class="item-drawbacks">
-    <h4>{{localize "Drawbacks"}}</h4>
+  
+  {{#if item.system.acquisition.prerequisites}}
+  <div class="item-prerequisites">
+    <h4>{{localize "MYRIAD_SYSTEM.Acquisition.prerequisites"}}</h4>
     <ul>
-    {{#each item.system.drawbacks}}
+    {{#each item.system.acquisition.prerequisites}}
       <li>{{this}}</li>
     {{/each}}
     </ul>
